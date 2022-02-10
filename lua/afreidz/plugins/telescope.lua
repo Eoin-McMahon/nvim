@@ -8,7 +8,7 @@ local actions = require("telescope.actions")
 
 telescope.setup({
 	defaults = {
-		prompt_prefix = "  ",
+		prompt_prefix = "   ",
 		selection_caret = "  ",
 		entry_prefix = "  ",
 		selection_strategy = "reset",
@@ -81,7 +81,10 @@ telescope.setup({
 		},
 	},
 	pickers = {
-		find_files = { preview = true },
+		find_files = { 
+      preview = true,
+      hidden = true 
+    },
 	},
 	extensions = {
 		["ui-select"] = {

@@ -1,5 +1,6 @@
 local fn = vim.fn
 
+-- Install packer on startup
 local dir = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(dir)) > 0 then
 	bootstrap = fn.system({
@@ -14,6 +15,7 @@ if fn.empty(fn.glob(dir)) > 0 then
 	vim.cmd([[packadd packer.nvim]])
 end
 
+-- pull in plugin config files
 vim.cmd([[
   augroup packer_user_config
     autocmd!
@@ -34,6 +36,8 @@ packer.init({
 	},
 })
 
+-- define plugins
+
 return packer.startup(function(use)
 	use("nvim-lua/plenary.nvim")
 
@@ -47,6 +51,7 @@ return packer.startup(function(use)
 	use("wbthomason/packer.nvim")
 	use("akinsho/toggleterm.nvim")
 	use("lukas-reineke/indent-blankline.nvim")
+  use("b3nj5m1n/kommentary")
 
 	-- Tab/Status/Tree
 	use("akinsho/bufferline.nvim")
@@ -125,6 +130,7 @@ return packer.startup(function(use)
 	-- Scrollbar
 	use("petertriho/nvim-scrollbar")
 
+  -- run sync on bootstrap
 	if bootstrap then
 		require("packer").sync()
 	end

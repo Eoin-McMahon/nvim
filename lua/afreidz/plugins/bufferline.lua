@@ -1,5 +1,6 @@
-local _bufferline, bufferline = pcall(require, "bufferline")
-if not _bufferline then
+local present, bufferline = pcall(require, "bufferline")
+
+if not present then
 	return
 end
 
@@ -57,7 +58,7 @@ local setup = {
 	highlights = highlights,
 	options = {
 		tab_size = 21,
-		numbers = "none",
+		numbers = "ordinal",
 		diagnostics = false,
 		modified_icon = "●",
 		indicator_icon = "▎",
@@ -82,5 +83,6 @@ local setup = {
 		offsets = { { filetype = "NvimTree", text = " ", padding = 1, text_align = "left" } },
 	},
 }
+
 
 bufferline.setup(setup)

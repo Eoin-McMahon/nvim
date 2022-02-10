@@ -123,6 +123,26 @@ local leader_mappings = {
 		v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
 		h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
 	},
+
+  b = {
+    name = "buffer",
+    n = { "<cmd>BufferLineCycleNext<CR>", "Next" },
+    p = { "<cmd>BufferLineCyclePrev<CR>", "Prev" },
+    s = { 
+      name = "Sort buffers",
+      d = { "<cmd>BufferLineSortByDirectory<CR>", "Sort by directory" },
+      e = { "<cmd>BufferLineSortByExtension<CR>", "Sort by file extension" },
+    },
+    ["1"] = { "<cmd>BufferLineGoToBuffer 1<CR>", "Buffer 1" },
+    ["2"] = { "<cmd>BufferLineGoToBuffer 2<CR>", "Buffer 2" },
+    ["3"] = { "<cmd>BufferLineGoToBuffer 3<CR>", "Buffer 3" },
+    ["4"] = { "<cmd>BufferLineGoToBuffer 4<CR>", "Buffer 4" },
+    ["5"] = { "<cmd>BufferLineGoToBuffer 5<CR>", "Buffer 5" },
+    ["6"] = { "<cmd>BufferLineGoToBuffer 6<CR>", "Buffer 6" },
+    ["7"] = { "<cmd>BufferLineGoToBuffer 7<CR>", "Buffer 7" },
+    ["8"] = { "<cmd>BufferLineGoToBuffer 8<CR>", "Buffer 8" },
+    ["9"] = { "<cmd>BufferLineGoToBuffer 9<CR>", "Buffer 9" },
+  },
 }
 
 local motion_mappings = {
