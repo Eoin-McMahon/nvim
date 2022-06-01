@@ -43,8 +43,14 @@ return packer.startup(function(use)
   use "wbthomason/packer.nvim" -- Have packer manage itself
   use {"catppuccin/nvim", as = "catppuccin"}
 
+	use "folke/which-key.nvim" -- show keymaps on screen
   use "kyazdani42/nvim-tree.lua" -- tree explorer
   use "kyazdani42/nvim-web-devicons" -- icons
+
+	use "lukas-reineke/indent-blankline.nvim" -- lines for indentation
+  use "neovim/nvim-lspconfig" -- Collection of configurations for the built-in LSP client
+  use "nvim-treesitter/nvim-treesitter" -- Better parsing of files that lsp will use
+  use "williamboman/nvim-lsp-installer" --automatic installion of lsp servers
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

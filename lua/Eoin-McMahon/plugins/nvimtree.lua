@@ -3,6 +3,16 @@ if not _tree then
 	return
 end
 
+-- Automatically close when I close the last buffer
+vim.api.nvim_create_autocmd("BufEnter", {
+  nested = true,
+  callback = function()
+    if #vim.api.nvim_list_wins() == 1 and vim.api.nvim_buf_get_name(0):match("NvimTree_") ~= nil then
+      vim.cmd "quit"
+    end
+  end
+})
+
 local cb = require("nvim-tree.config").nvim_tree_callback
 local mappings = {
 	{ key = "q", cb = cb("close") },
@@ -22,10 +32,7 @@ local mappings = {
 	{ key = { "<cr>", "<2-LeftMouse>" }, cb = cb("edit") },
 }
 
--- setup with all defaults
--- each of these are documented in `:help nvim-tree.OPTION_NAME`
--- nested options are documented by accessing them with `.` (eg: `:help nvim-tree.view.mappings.list`).
-require'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
+require'nvim-tree'.setup {
   auto_reload_on_write = true,
   create_in_closed_folder = false,
   disable_netrw = false,
@@ -42,7 +49,7 @@ require'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
   respect_buf_cwd = false,
   view = {
     adaptive_size = false,
-    width = 30,
+    width = 40,
     height = 30,
     hide_root_folder = false,
     side = "left",
@@ -53,7 +60,6 @@ require'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
     mappings = {
       custom_only = false,
       list = {
-        -- user mappings go here
       },
     },
   },
@@ -153,7 +159,7 @@ require'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
       max_folder_discovery = 300,
     },
     open_file = {
-      quit_on_open = false,
+      quit_on_open = true,
       resize_window = true,
       window_picker = {
         enable = true,
@@ -188,4 +194,4 @@ require'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
       profile = false,
     },
   },
-} -- END_DEFAULT_OPTS
+}
