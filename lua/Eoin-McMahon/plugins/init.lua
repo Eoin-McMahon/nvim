@@ -19,7 +19,7 @@ end
 vim.cmd [[
   augroup packer_user_config
     autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+    autocmd BufWritePost init.lua source <afile> | PackerSync
   augroup end
 ]]
 
@@ -49,8 +49,16 @@ return packer.startup(function(use)
 
 	use "lukas-reineke/indent-blankline.nvim" -- lines for indentation
   use "neovim/nvim-lspconfig" -- Collection of configurations for the built-in LSP client
+  use "williamboman/nvim-lsp-installer" -- automatically install lsp servers
   use "nvim-treesitter/nvim-treesitter" -- Better parsing of files that lsp will use
-  use "williamboman/nvim-lsp-installer" --automatic installion of lsp servers
+  use "hrsh7th/nvim-cmp"
+  use "hrsh7th/cmp-nvim-lsp"
+  use "hrsh7th/cmp-buffer"
+  use "hrsh7th/cmp-path"
+  use "hrsh7th/cmp-cmdline"
+
+  use "windwp/nvim-autopairs" -- automatically close opened brackets
+  use "numToStr/Comment.nvim" -- automatic code comment handling
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
