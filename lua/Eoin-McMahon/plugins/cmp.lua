@@ -11,16 +11,19 @@ _cmp.setup{
       -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
     end,
   },
-  window = {
-    completion = _cmp.config.window.bordered(),
-    documentation = _cmp.config.window.bordered(),
-  },
+
+  --window = {
+    --completion = _cmp.config.window.bordered(),
+   --= --documentation = _cmp.config.window.bordered(),
+  --},
   mapping = _cmp.mapping.preset.insert({
+    ['<c-j>'] = _cmp.mapping.select_next_item(),
+    ['<c-k>'] = _cmp.mapping.select_prev_item(),
     ['<C-d>'] = _cmp.mapping.scroll_docs(-4),
     ['<C-u>'] = _cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = _cmp.mapping.complete(),
     ['<C-e>'] = _cmp.mapping.abort(),
-    ['<CR>'] = _cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    ['<C-l>'] = _cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
   }),
   sources = _cmp.config.sources({
     { name = 'nvim_lsp' },

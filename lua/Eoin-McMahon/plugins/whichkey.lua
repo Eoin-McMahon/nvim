@@ -31,7 +31,6 @@ local setup = {
 		scroll_up = "<c-u>",
 	},
 	window = {
-		border = "rounded",
 		position = "bottom",
 		margin = { 1, 0, 1, 0 },
 		padding = { 2, 2, 2, 2 },
@@ -65,7 +64,6 @@ local leader_opts = {
 local leader_mappings = {
 	x = { "<cmd>:q<cr>", "Quit Buffer" },
 	q = { "<cmd>conf qa<cr>", "Quit Nvim" },
-	c = { "<cmd>Bdelete!<cr>", "Close Buffer" },
 	h = { "<cmd>nohlsearch<cr>", "Clear Highlight" },
 	e = { "<cmd>NvimTreeToggle<cr>", "File Explorer" },
 	p = {

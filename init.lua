@@ -11,4 +11,5 @@ require("Eoin-McMahon.plugins.lsp")
 require("Eoin-McMahon.plugins.cmp")
 require("Eoin-McMahon.plugins.treesitter")
 require("Eoin-McMahon.plugins.autopairs")
+require("Eoin-McMahon.plugins.comment")
 

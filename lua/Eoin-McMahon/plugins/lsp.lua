@@ -20,7 +20,6 @@ lsp_installer.on_server_ready(function(server)
 end)
 
  -- lsp keymaps
-keymap('n', '<space>d', ':lua vim.diagnostic.open_float({focus = false})<cr>', {})
 keymap('n', '<leader>dk', ':lua vim.diagnostic.goto_prev()<cr>', {})
 keymap('n', '<leader>dj', ':lua vim.diagnostic.goto_next()<cr>', {})
 
