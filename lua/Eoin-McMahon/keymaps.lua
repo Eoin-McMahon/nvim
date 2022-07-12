@@ -15,3 +15,11 @@ keymap("v", "<c-k>", ":m '<-2<CR>gv=gv", opts)
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
+-- Switch to most recent buffer
+keymap("n", "<leader><leader>", ":e #<CR>", opts)
+
+-- skip all tests except ones containing the word flash
+keymap("n", "<leader>sa", "<ESC>:g/test_.*(self.*):\\(.*flash.*\\)\\@<!/norm oself.skipTest('debug skip')<CR>", {})
+-- delete all debug skips
+keymap("n", "<leader>sd", "<ESC>:g/self.skipTest('debug skip')/d<CR>", {})
+

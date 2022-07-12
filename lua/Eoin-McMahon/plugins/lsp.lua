@@ -31,12 +31,3 @@ keymap('n', '<leader>ca', ':lua vim.lsp.buf.code_action()<cr>', opts)
 keymap('n', '<leader>rn', ':lua vim.lsp.buf.rename()<cr>', opts)
 keymap('n', '<leader>af', ':lua vim.lsp.buf.format()<cr>', opts)
 
-
--- Use a loop to conveniently call 'setup' on multiple servers and
--- map buffer local keybindings when the language server attaches
--- local servers = { 'pyright' }
--- for _, lsp in pairs(servers) do
---     lsp_config[lsp].setup {
---     on_attach = on_attach,
---   }
--- end
