@@ -42,8 +42,10 @@ packer.init {
 return packer.startup(function(use)
     use "wbthomason/packer.nvim" -- Have packer manage itself
     use { "catppuccin/nvim", as = "catppuccin" }
+    use { "ellisonleao/gruvbox.nvim" }
 
     use "folke/which-key.nvim" -- show keymaps on screen
+
     use "kyazdani42/nvim-tree.lua" -- tree explorer
     use "kyazdani42/nvim-web-devicons" -- icons
     use {
@@ -62,6 +64,8 @@ return packer.startup(function(use)
 
     use "windwp/nvim-autopairs" -- automatically close opened brackets
     use "numToStr/Comment.nvim" -- automatic code comment handling
+
+    use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons'}
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

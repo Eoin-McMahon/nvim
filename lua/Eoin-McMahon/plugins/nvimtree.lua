@@ -32,7 +32,7 @@ local mappings = {
 	{ key = { "<cr>", "<2-LeftMouse>" }, cb = cb("edit") },
 }
 
-require'nvim-tree'.setup {
+require 'nvim-tree'.setup {
   auto_reload_on_write = true,
   create_in_closed_folder = false,
   disable_netrw = false,
