@@ -23,7 +23,7 @@ _cmp.setup{
     ['<C-u>'] = _cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = _cmp.mapping.complete(),
     ['<C-e>'] = _cmp.mapping.abort(),
-    ['<C-l>'] = _cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    ['<CR>'] = _cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
   }),
   sources = _cmp.config.sources({
     { name = 'nvim_lsp' },
@@ -66,7 +66,7 @@ _cmp.setup.cmdline(':', {
 -- Setup lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-require('lspconfig')['pyright'].setup {
+require('lspconfig')['pylsp'].setup {
   capabilities = capabilities
 }
 

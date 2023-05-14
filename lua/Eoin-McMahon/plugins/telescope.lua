@@ -2,6 +2,7 @@ require('telescope').setup{
   defaults = {
     -- Default configuration for telescope goes here:
     -- config_key = value,
+        -- layout_strategy = 'vertical',
     mappings = {
       i = {
         -- map actions.which_key to <C-h> (default: <C-/>)
@@ -19,6 +20,13 @@ require('telescope').setup{
     -- }
     -- Now the picker_config_key will be applied every time you call this
     -- builtin picker
+    find_files = {
+      theme = "ivy",
+    },
+
+    live_grep = {
+      theme = "ivy",
+    }
   },
   extensions = {
     -- Your extension configuration goes here:

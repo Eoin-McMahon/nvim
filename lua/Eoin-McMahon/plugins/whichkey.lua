@@ -66,6 +66,22 @@ local leader_mappings = {
 	q = { "<cmd>conf qa<cr>", "Quit Nvim" },
 	h = { "<cmd>nohlsearch<cr>", "Clear Highlight" },
 	e = { "<cmd>NvimTreeToggle<cr>", "File Explorer" },
+    d = {
+        name = "Diagnostics",
+        n = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "goto_next" },
+        p = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "goto_prev" },
+        k = { "<cmd>lua vim.lsp.buf.hover()<cr>", "signature" },
+        s = { "<cmd>lua vim.diagnostic.open_float() <CR>", "show diagnostic" },
+        d = { "<cmd>lua vim.lsp.buf.definition()<cr>", "definition" },
+        D = { "<cmd>lua vim.lsp.buf.declaration()<cr>", "declaration" },
+        i = { "<cmd>lua vim.lsp.buf.implementation()<cr>", "implementation" },
+        r = { "<cmd>lua vim.lsp.buf.references()<cr>", "references" },
+        t = { "<cmd>lua vim.lsp.buf.type_definition()<cr>", "type definition" },
+        f = { "<cmd>lua vim.lsp.buf.format()<cr>", "format code" },
+        a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "code action" },
+        r = { "<cmd>lua require('nice-reference').references()<CR>", "references" },
+    },
+
     f = {
         name = "Find",
         y = { "<cmd>Telescope neoclip<cr>", "Yanks" },
@@ -79,12 +95,14 @@ local leader_mappings = {
         m = { "<cmd>Telescope man_pages<cr>", "Manuals" },
         r = { "<cmd>Telescope registers<cr>", "Registers" },
     },
+    
     g = {
         name = "Git",
         s = { "<cmd>Telescope git_status<cr>", "File Git Status" },
         c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
         b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
     },
+    
 	p = {
 		name = "Packer",
 		s = { "<cmd>PackerSync<cr>", "Sync" },
@@ -93,6 +111,12 @@ local leader_mappings = {
 		c = { "<cmd>PackerCompile<cr>", "Compile" },
 		i = { "<cmd>PackerInstall<cr>", "Install" },
 	},
+
+    o = {
+        name = "Open",
+        m = { "<cmd>Mason<cr>", "Mason" },
+
+    },
 }
 
 local motion_mappings = {

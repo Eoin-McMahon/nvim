@@ -1,9 +1,10 @@
 local options = {
 	mouse = "a",
+	mousemoveevent = true,
 	tabstop = 4,
 	wrap = false,
 	fcs = "eob: ",
-	cmdheight = 1,
+	cmdheight = 0,
 	number = true,
 	scrolloff = 8,
 	pumheight = 10,
@@ -27,12 +28,12 @@ local options = {
 	signcolumn = "yes",
 	smartindent = true,
 	writebackup = true,
-	termguicolors = true,
+	-- termguicolors = true,
 	foldmethod = "manual",
 	fileencoding = "utf-8",
-	relativenumber = false,
+	relativenumber = true,
 	clipboard = "unnamedplus",
-	guifont = "monospace:h17",
+	-- guifont = "monospace:h17",
 	completeopt = { "menuone", "noselect" },
 }
 

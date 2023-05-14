@@ -41,8 +41,12 @@ packer.init {
 -- Define all plugins
 return packer.startup(function(use)
     use "wbthomason/packer.nvim" -- Have packer manage itself
+
+    -- COLORSCHEMES
+    use { "sainnhe/gruvbox-material" }
+    use { "sainnhe/everforest" }
     use { "catppuccin/nvim", as = "catppuccin" }
-    use { "ellisonleao/gruvbox.nvim" }
+
 
     use "folke/which-key.nvim" -- show keymaps on screen
 
@@ -52,20 +56,43 @@ return packer.startup(function(use)
         'nvim-telescope/telescope.nvim',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
+    use { 'wiliamks/nice-reference.nvim'}
+    use {"ellisonleao/glow.nvim"} --markdown preview
     use "lukas-reineke/indent-blankline.nvim" -- lines for indentation
     use "neovim/nvim-lspconfig" -- Collection of configurations for the built-in LSP client
+    use { "williamboman/mason.nvim" } -- Helper for installing lsp servers/linters
     use "williamboman/nvim-lsp-installer" -- automatically install lsp servers
     use "nvim-treesitter/nvim-treesitter" -- Better parsing of files that lsp will use
+    use { 'anuvyklack/pretty-fold.nvim',
+        config = function()
+        require('pretty-fold').setup()
+        end
+    }
+
     use "hrsh7th/nvim-cmp"
     use "hrsh7th/cmp-nvim-lsp"
     use "hrsh7th/cmp-buffer"
     use "hrsh7th/cmp-path"
     use "hrsh7th/cmp-cmdline"
 
+    use { -- neovim in the browser!
+        'glacambre/firenvim',
+        run = function() vim.fn['firenvim#install'](0) end 
+    }
+
     use "windwp/nvim-autopairs" -- automatically close opened brackets
     use "numToStr/Comment.nvim" -- automatic code comment handling
+    use { -- startup screen
+      "startup-nvim/startup.nvim",
+      requires = {"nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim"},
+      config = function()
+        require"startup".setup()
+      end
+}
 
     use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons'}
+    use {'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true }}
+
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

@@ -23,3 +23,6 @@ keymap("n", "<leader>sa", "<ESC>:g/test_.*(self.*):\\(.*flash.*\\)\\@<!/norm ose
 -- delete all debug skips
 keymap("n", "<leader>sd", "<ESC>:g/self.skipTest('debug skip')/d<CR>", {})
 
+keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<cr>", {})
+
+
