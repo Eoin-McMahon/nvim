@@ -11,6 +11,7 @@ return {
 					"*",
 				},
 			},
+
 			dashboard = { enabled = true },
 			explorer = { enabled = true },
 			indent = { enabled = true },
@@ -19,7 +20,18 @@ return {
 				enabled = true,
 				timeout = 3000,
 			},
-			picker = { enabled = true },
+			picker = {
+				explorer = {
+					follow_file = false,
+				},
+				autochdir = false,
+				enabled = false,
+				buffers = {
+					current = false,
+					sort_lastused = true,
+					layout = { preview = false, preset = "select" },
+				},
+			},
 			quickfile = { enabled = true },
 			scope = { enabled = true },
 			scroll = { enabled = false },

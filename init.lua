@@ -19,6 +19,10 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 vim.opt.clipboard = "unnamedplus"
 
+vim.cmd("autocmd FileType * silent! lcd %:p:h")
+
+vim.o.autochdir = false
+
 -- Configure tabs and spaces
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
@@ -46,6 +50,9 @@ vim.opt.smartcase = true
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
+-- Dont auto change dir
+vim.opt.autochdir = false
+
 -- Show which line your cursor is on
 vim.opt.cursorline = true
 
@@ -57,12 +64,3 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
 vim.keymap.set("n", "<leader>?", vim.diagnostic.open_float, { desc = "Open floating diagnostic" })
-
--- Close floating windows with escape
-vim.keymap.set("n", "<esc>", function()
-	for _, win in ipairs(vim.api.nvim_list_wins()) do
-		if vim.api.nvim_win_get_config(win).relative == "win" then
-			vim.api.nvim_win_close(win, false)
-		end
-	end
-end)

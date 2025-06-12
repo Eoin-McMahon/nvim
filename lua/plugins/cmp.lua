@@ -1,22 +1,30 @@
 return {
 	{
-		"saghen/blink.cmp",
-		-- optional: provides snippets for the snippet source
-		dependencies = { "rafamadriz/friendly-snippets", "codeium.nvim" },
-		version = "*",
-
-		---@module 'blink.cmp'
-		---@type blink.cmp.Config
-		opts = {
-			keymap = { preset = "default" },
-			appearance = {
-				use_nvim_cmp_as_default = true,
-				nerd_font_variant = "mono",
-			},
-			sources = {
-				default = { "lsp", "path", "snippets", "buffer" },
-			},
+		"hrsh7th/nvim-cmp",
+		dependencies = {
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-buffer",
+			"rafamadriz/friendly-snippets",
 		},
-		opts_extend = { "sources.default" },
+		config = function()
+			local cmp = require("cmp")
+
+			cmp.setup({
+				completion = { completeopt = "menu,menuone,noinsert" },
+				mapping = cmp.mapping.preset.insert({
+					["<C-n>"] = cmp.mapping.select_next_item(),
+					["<C-p>"] = cmp.mapping.select_prev_item(),
+					["<C-y>"] = cmp.mapping.confirm({ select = true }),
+					["<C-Space>"] = cmp.mapping.complete({}),
+				}),
+				sources = {
+					{ name = "codeium" },
+					{ name = "nvim_lsp" },
+					{ name = "luasnip" },
+					{ name = "path" },
+				},
+			})
+		end,
 	},
 }
