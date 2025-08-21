@@ -25,7 +25,7 @@ return {
 					follow_file = false,
 				},
 				autochdir = false,
-				enabled = false,
+				enabled = true,
 				buffers = {
 					current = false,
 					sort_lastused = true,
@@ -33,7 +33,7 @@ return {
 				},
 			},
 			quickfile = { enabled = true },
-			scope = { enabled = true },
+			scope = { enabled = false },
 			scroll = { enabled = false },
 			statuscolumn = { enabled = true },
 			words = { enabled = true },

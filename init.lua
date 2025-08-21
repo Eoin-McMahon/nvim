@@ -17,11 +17,17 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
+-- Keep directory fixed
+vim.opt.autochdir = false
+vim.api.nvim_create_autocmd("BufEnter", {
+	callback = function()
+		vim.cmd("lcd " .. vim.fn.getcwd())
+	end,
+})
+
 vim.opt.clipboard = "unnamedplus"
 
 vim.cmd("autocmd FileType * silent! lcd %:p:h")
-
-vim.o.autochdir = false
 
 -- Configure tabs and spaces
 vim.opt.tabstop = 2
