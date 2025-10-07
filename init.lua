@@ -6,6 +6,9 @@ vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right win
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
+-- lsp rename
+vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { desc = "LSP Rename" })
+
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
 --  See `:help vim.highlight.on_yank()`
@@ -47,6 +50,10 @@ vim.opt.relativenumber = true
 
 -- Don't show the mode, since it's already in status line
 vim.opt.showmode = true
+
+-- Spell checker
+vim.opt.spell = true
+vim.opt.spelllang = "en_us"
 
 -- Case-insensitive searching UNLESS \C or capital in search
 vim.opt.ignorecase = true
