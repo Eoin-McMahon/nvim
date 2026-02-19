@@ -21,7 +21,15 @@ return {
 		flavour = "latte", -- latte, frappe, macchiato, mocha
 		config = function()
 			-- load the colorscheme here
-			vim.cmd([[colorscheme catppuccin]])
+			-- vim.cmd([[colorscheme catppuccin]])
+		end,
+	},
+	{
+		"miikanissi/modus-themes.nvim",
+		priority = 1000,
+		config = function()
+			-- load the colorscheme here
+			vim.cmd([[colorscheme modus]])
 		end,
 	},
 }

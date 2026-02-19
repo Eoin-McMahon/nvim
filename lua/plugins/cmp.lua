@@ -19,10 +19,11 @@ return {
 					["<C-Space>"] = cmp.mapping.complete({}),
 				}),
 				sources = {
-					{ name = "codeium" },
 					{ name = "nvim_lsp" },
-					{ name = "luasnip" },
-					{ name = "path" },
+					{ name = "codeium" },
+					-- { name = "luasnip" },
+					-- { name = "path" },
+					-- { name = "orgmode" },
 				},
 			})
 		end,

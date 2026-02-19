@@ -5,8 +5,8 @@ return {
 		local orgmode = require("orgmode")
 
 		orgmode.setup({
-			org_agenda_files = "~/orgfiles/**/*",
-			org_default_notes_file = "~/orgfiles/notes.org",
+			org_agenda_files = "~/org_roam_files/**/*",
+			org_default_notes_file = "~/org_roam_files/notes.org",
 			org_agenda_show_subtree = true, -- show child bullets in agenda
 
 			org_agenda_window_setup = "tab", -- open agenda in vertical split
@@ -18,14 +18,8 @@ return {
 				j = {
 					description = "Journal entry",
 					template = "* %?\n<%<%Y-%m-%d %a %H:%M>>\n", -- always insert an active timestamp
-					target = "~/orgfiles/journal.org",
+					target = "~/org_roam_files/20251121132222-journal.org",
 					datetree = true, -- keep the daily hierarc
-				},
-				m = {
-					description = "Meeting note",
-					template = "* %? :%^{Tag|1-1|retro|sync|planning|demo}:\n<%<%Y-%m-%d %a %H:%M>>\n",
-					target = "~/orgfiles/meetings.org",
-					datetree = true,
 				},
 			},
 
@@ -36,7 +30,7 @@ return {
 					types = {
 						{
 							type = "agenda",
-							org_agenda_files = { "~/orgfiles/journal.org" },
+							org_agenda_files = { "~/org_roam_files/20251121132222-journal.org" },
 							org_agenda_start_day = "-4d", -- 4 days ago
 							org_agenda_span = 5, -- total 5 days
 							org_agenda_overriding_header = "Recent Journal (past 5 days)",
@@ -47,35 +41,5 @@ return {
 				},
 			},
 		})
-
-		local wk = require("which-key")
-		wk.register({
-			o = { -- org prefix
-				J = {
-					function()
-						vim.cmd("tabedit ~/orgfiles/journal.org")
-					end,
-					"Open journal in new tab",
-				},
-				j = {
-					function()
-						vim.cmd("vsplit ~/orgfiles/journal.org")
-					end,
-					"Open journal in vertical split",
-				},
-				M = {
-					function()
-						vim.cmd("tabedit ~/orgfiles/meetings.org")
-					end,
-					"Open meeting notes in new tab",
-				},
-				m = {
-					function()
-						vim.cmd("vsplit ~/orgfiles/meetings.org")
-					end,
-					"Open meeting notes in vertical split",
-				},
-			},
-		}, { prefix = "<Leader>" })
 	end,
 }

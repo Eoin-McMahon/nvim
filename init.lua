@@ -20,6 +20,14 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
+-- Support syntax highlighting in gotmpl
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+	pattern = { "*.gotmpl", "*.tpl", "*.yaml.gotmpl", "*.tpl.gotmpl", "templates/*.yaml" },
+	callback = function()
+		vim.bo.filetype = "gotmpl"
+	end,
+})
+
 -- Keep directory fixed
 vim.opt.autochdir = false
 vim.api.nvim_create_autocmd("BufEnter", {
