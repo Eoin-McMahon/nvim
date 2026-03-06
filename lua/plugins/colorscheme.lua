@@ -29,6 +29,9 @@ return {
 		priority = 1000,
 		config = function()
 			-- load the colorscheme here
+			require("modus-themes").setup({
+				variant = "tinted", -- Theme comes in four variants `default`, `tinted`, `deuteranopia`, and `tritanopia`
+			})
 			vim.cmd([[colorscheme modus_vivendi]])
 		end,
 	},

@@ -49,12 +49,29 @@ vim.bo.softtabstop = 2
 vim.opt.swapfile = false
 vim.opt.undofile = true
 vim.opt.wrap = true
-vim.g.have_nerd_font = true
 vim.opt.mouse = "a"
+
+-- nerd font
+vim.g.have_nerd_font = true
+
+-- Diagnostic signs
+local signs = {
+	Error = "",
+	Warn = "",
+	Info = "",
+	Hint = "󰌵",
+}
+
+for type, icon in pairs(signs) do
+	local hl = "DiagnosticSign" .. type
+	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+end
 
 -- line numbers
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.numberwidth = 2
+vim.opt.signcolumn = "auto:1"
 
 -- Don't show the mode, since it's already in status line
 vim.opt.showmode = true
