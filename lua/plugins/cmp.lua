@@ -20,7 +20,7 @@ return {
 				}),
 				sources = {
 					{ name = "nvim_lsp" },
-					{ name = "codeium" },
+					{ name = "copilot" },
 					-- { name = "luasnip" },
 					-- { name = "path" },
 					-- { name = "orgmode" },

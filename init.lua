@@ -6,7 +6,7 @@ vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right win
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
--- lsp rename
+-- LSP rename
 vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { desc = "LSP Rename" })
 
 -- Highlight when yanking (copying) text
@@ -49,7 +49,7 @@ vim.bo.softtabstop = 2
 vim.opt.swapfile = false
 vim.opt.undofile = true
 vim.opt.wrap = true
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 vim.opt.mouse = "a"
 
 -- line numbers
@@ -62,6 +62,7 @@ vim.opt.showmode = true
 -- Spell checker
 vim.opt.spell = true
 vim.opt.spelllang = "en_us"
+vim.opt.spelloptions = "camel"
 
 -- Case-insensitive searching UNLESS \C or capital in search
 vim.opt.ignorecase = true
@@ -70,9 +71,6 @@ vim.opt.smartcase = true
 -- Configure how new splits should be opened
 vim.opt.splitright = true
 vim.opt.splitbelow = true
-
--- Dont auto change dir
-vim.opt.autochdir = false
 
 -- Show which line your cursor is on
 vim.opt.cursorline = true

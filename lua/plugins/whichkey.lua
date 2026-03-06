@@ -6,6 +6,21 @@ return {
 		dependencies = { "nvim-tree/nvim-web-devicons", opts = {} },
 		keys = {
 			{
+				"<leader>b",
+				group = "Buffers",
+				nowait = true,
+				remap = false,
+			},
+			{
+				"<leader>bq",
+				function()
+					vim.cmd("enew")
+					vim.cmd("only")
+					require("snacks").dashboard()
+				end,
+				desc = "Close all → Dashboard",
+			},
+			{
 				"<leader>d",
 				group = "Debugger",
 				nowait = true,
