@@ -72,6 +72,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.numberwidth = 2
 vim.opt.signcolumn = "auto:1"
+vim.opt.colorcolumn = "88"
 
 -- Don't show the mode, since it's already in status line
 vim.opt.showmode = true

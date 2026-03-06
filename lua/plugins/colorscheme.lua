@@ -32,7 +32,7 @@ return {
 			require("modus-themes").setup({
 				variant = "tinted", -- Theme comes in four variants `default`, `tinted`, `deuteranopia`, and `tritanopia`
 			})
-			vim.cmd([[colorscheme modus_vivendi]])
+			vim.cmd([[colorscheme modus_operandi]])
 		end,
 	},
 }

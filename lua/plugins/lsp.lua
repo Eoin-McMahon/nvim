@@ -4,7 +4,7 @@ return {
 		config = function()
 			-- 🔧 Diagnostic rendering settings
 			vim.diagnostic.config({
-				underline = true, -- disables squiggly lines
+				underline = false, -- disables squiggly lines
 				virtual_text = false, -- disables inline error text
 				update_in_insert = false,
 			})
@@ -22,6 +22,15 @@ return {
 			})
 
 			vim.lsp.enable("pyright")
+			vim.lsp.config("lua_ls", {
+				settings = {
+					Lua = {
+						diagnostics = {
+							globals = { "vim" },
+						},
+					},
+				},
+			})
 			vim.lsp.enable("lua_ls")
 		end,
 		dependencies = {
