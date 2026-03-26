@@ -23,19 +23,19 @@ return {
 
 			vim.keymap.set(
 				"n",
-				"<leader>pf",
+				"<leader>.",
 				builtin.find_files,
 				vim.tbl_extend("force", opts, { desc = "Find files in project" })
 			)
 			vim.keymap.set(
 				"n",
-				"<leader>pg",
+				"<leader>/",
 				builtin.live_grep,
 				vim.tbl_extend("force", opts, { desc = "Search text in project" })
 			)
 
 			-- Always define <leader>pp, even if telescope-project fails
-			vim.keymap.set("n", "<leader>pp", function()
+			vim.keymap.set("n", "<leader>p", function()
 				if has_telescope then
 					local ok, _ = pcall(function()
 						telescope.extensions.projects.projects()

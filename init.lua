@@ -48,7 +48,7 @@ vim.bo.softtabstop = 2
 
 vim.opt.swapfile = false
 vim.opt.undofile = true
-vim.opt.wrap = true
+vim.opt.wrap = false
 vim.opt.mouse = "a"
 
 -- nerd font
@@ -73,6 +73,12 @@ vim.opt.relativenumber = true
 vim.opt.numberwidth = 2
 vim.opt.signcolumn = "auto:1"
 vim.opt.colorcolumn = "88"
+
+-- get rid of cmdline when not in use
+vim.opt.cmdheight = 1
+vim.opt.laststatus = 3
+-- hides cursor position in cmdline
+vim.opt.ruler = false
 
 -- Don't show the mode, since it's already in status line
 vim.opt.showmode = true

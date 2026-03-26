@@ -1,36 +1,14 @@
 return {
 	{
-		"neanias/everforest-nvim",
-		version = false,
-		priority = 1000, -- make sure to load this before all the other start plugins
-		config = function()
-			-- vim.cmd([[colorscheme everforest]])
-		end,
-	},
-	{
-		"rose-pine/neovim",
-		name = "rose-pine",
-		config = function()
-			-- vim.cmd([[colorscheme rose-pine]])
-		end,
-	},
-	{
-		"catppuccin/nvim",
-		name = "catppuccin",
-		priority = 1000,
-		flavour = "latte", -- latte, frappe, macchiato, mocha
-		config = function()
-			-- load the colorscheme here
-			-- vim.cmd([[colorscheme catppuccin]])
-		end,
-	},
-	{
 		"miikanissi/modus-themes.nvim",
 		priority = 1000,
 		config = function()
 			-- load the colorscheme here
 			require("modus-themes").setup({
-				variant = "tinted", -- Theme comes in four variants `default`, `tinted`, `deuteranopia`, and `tritanopia`
+				variants = {
+					modus_operandi = "tinted", -- Set variant for `modus_operandi` style
+					modus_vivendi = "tinted", -- Set variant for `modus_vivendi` style
+				},
 			})
 			vim.cmd([[colorscheme modus_operandi]])
 		end,
