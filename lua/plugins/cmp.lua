@@ -16,14 +16,13 @@ return {
 					["<C-n>"] = cmp.mapping.select_next_item(),
 					["<C-p>"] = cmp.mapping.select_prev_item(),
 					["<C-y>"] = cmp.mapping.confirm({ select = true }),
+					["<C-Enter>"] = cmp.mapping.confirm({ select = true }),
 					["<C-Space>"] = cmp.mapping.complete({}),
 				}),
 				sources = {
-					{ name = "nvim_lsp" },
 					{ name = "copilot" },
-					-- { name = "luasnip" },
-					-- { name = "path" },
-					-- { name = "orgmode" },
+					{ name = "nvim_lsp" },
+					{ name = "path" },
 				},
 			})
 		end,

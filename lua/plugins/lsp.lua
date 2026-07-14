@@ -8,20 +8,19 @@ return {
 				virtual_text = false, -- disables inline error text
 				update_in_insert = false,
 			})
-			vim.lsp.config("pyright", {
+			vim.lsp.config("basedpyright", {
 				settings = {
-					python = {
+					basedpyright = {
 						analysis = {
 							diagnosticMode = "openFilesOnly",
 							typeCheckingMode = "strict",
 							autoSearchPaths = true,
-							useLibraryCodeForTypes = true,
 						},
 					},
 				},
 			})
 
-			vim.lsp.enable("pyright")
+			vim.lsp.enable("basedpyright")
 			vim.lsp.config("lua_ls", {
 				settings = {
 					Lua = {
@@ -34,8 +33,8 @@ return {
 			vim.lsp.enable("lua_ls")
 		end,
 		dependencies = {
-			"williamboman/mason.nvim",
-			"williamboman/mason-lspconfig.nvim",
+			"mason-org/mason.nvim",
+			"mason-org/mason-lspconfig.nvim",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
 		},
 	},

@@ -16,7 +16,6 @@ return {
 
 			-- Dap Virtual Text
 			dap_virtual_text.setup()
-			require("mason").setup()
 			require("mason-nvim-dap").setup()
 		end,
 	},

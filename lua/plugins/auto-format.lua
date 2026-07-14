@@ -6,7 +6,7 @@ return {
 			notify_on_error = true,
 			formatters_by_ft = {
 				lua = { "stylua" },
-				python = { "isort", "black", "ruff" },
+				python = { "isort", "black", "ruff_fix" },
 			},
 			format_on_save = {
 				timeout_ms = 500,

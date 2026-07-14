@@ -1,10 +1,7 @@
 require("config.lazy")
 
---  See `:help wincmd` for a list of all window commands
-vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
-vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
-vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
-vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+-- Window/pane navigation is handled by vim-tmux-navigator (see plugins/navigation.lua),
+-- which falls back to plain window movement outside tmux.
 
 -- LSP rename
 vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { desc = "LSP Rename" })
@@ -28,13 +25,7 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 	end,
 })
 
--- Keep directory fixed
 vim.opt.autochdir = false
-vim.api.nvim_create_autocmd("BufEnter", {
-	callback = function()
-		vim.cmd("lcd " .. vim.fn.getcwd())
-	end,
-})
 
 vim.opt.clipboard = "unnamedplus"
 

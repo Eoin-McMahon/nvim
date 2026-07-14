@@ -1,13 +1,12 @@
 return {
 	{
 		"stevearc/oil.nvim",
-		opts = {},
-		-- Optional dependencies
-		vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" }),
 		-- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
 		lazy = false,
 		dependencies = { { "echasnovski/mini.icons", opts = {} } },
 		config = function()
+			vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+
 			require("oil").setup({
 				default_file_explorer = true,
 				delete_to_trash = true,
