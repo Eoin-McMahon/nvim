@@ -1,27 +1,48 @@
+local filetypes = {
+	"python",
+	"json",
+	"lua",
+	"yaml",
+	"vim",
+	"help",
+	"query",
+	"elixir",
+	"heex",
+	"javascript",
+	"html",
+	"markdown",
+}
+
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
+		branch = "main",
+		lazy = false,
 		build = ":TSUpdate",
 		config = function()
-			local configs = require("nvim-treesitter.configs")
+			require("nvim-treesitter").setup()
+			require("nvim-treesitter").install({
+				"python",
+				"json",
+				"lua",
+				"yaml",
+				"vim",
+				"vimdoc",
+				"query",
+				"elixir",
+				"heex",
+				"javascript",
+				"html",
+				"markdown",
+				"markdown_inline",
+			})
 
-			configs.setup({
-				ensure_installed = {
-					"python",
-					"json",
-					"lua",
-					"yaml",
-					"vim",
-					"vimdoc",
-					"query",
-					"elixir",
-					"heex",
-					"javascript",
-					"html",
-				},
-				sync_install = false,
-				highlight = { enable = true },
-				indent = { enable = true },
+			vim.api.nvim_create_autocmd("FileType", {
+				pattern = filetypes,
+				callback = function()
+					vim.treesitter.start()
+					vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+				end,
 			})
 		end,
 	},

@@ -72,7 +72,7 @@ vim.opt.laststatus = 3
 vim.opt.ruler = false
 
 -- Don't show the mode, since it's already in status line
-vim.opt.showmode = true
+vim.opt.showmode = false
 
 -- Spell checker
 vim.opt.spell = true
