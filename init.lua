@@ -45,24 +45,23 @@ vim.opt.mouse = "a"
 -- nerd font
 vim.g.have_nerd_font = true
 
--- Diagnostic signs
-local signs = {
-	Error = "",
-	Warn = "",
-	Info = "",
-	Hint = "󰌵",
-}
-
-for type, icon in pairs(signs) do
-	local hl = "DiagnosticSign" .. type
-	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-end
+-- Diagnostics: colour the line number instead of showing a sign
+vim.diagnostic.config({
+	signs = {
+		numhl = {
+			[vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
+			[vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
+			[vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
+			[vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
+		},
+	},
+})
 
 -- line numbers
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.numberwidth = 2
-vim.opt.signcolumn = "auto:1"
+vim.opt.signcolumn = "no"
 vim.opt.colorcolumn = "88"
 
 -- get rid of cmdline when not in use

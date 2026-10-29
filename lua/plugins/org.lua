@@ -1,96 +1,61 @@
-local function get_current_iso_week()
-	local now = os.date("*t")
-	-- Calculate ISO week number
-	local jan1 = os.time({ year = now.year, month = 1, day = 1 })
-	local days = math.floor(os.difftime(os.time(now), jan1) / (24 * 60 * 60))
-	local wday = os.date("*t", jan1).wday
-	-- Adjust so Monday=1 … Sunday=7
-	local iso_day = (now.wday + 6) % 7 + 1
-	local week = math.floor((days + wday - 1) / 7) + 1
-	return string.format("%04d-W%02d", now.year, week)
-end
-
 return {
-	"chipsenkbeil/org-roam.nvim",
-	tag = "0.2.0",
-	dependencies = {
-		{
-			"nvim-orgmode/orgmode",
-			tag = "0.7.0",
-			config = function()
-				local orgmode = require("orgmode")
-				orgmode.setup({
-					-- Your orgmode config here
-					org_agenda_files = vim.fn.expand("~/org_roam_files/**/*"),
-					org_default_notes_file = vim.fn.expand("~/org_roam_files/notes.org"),
-					org_agenda_show_subtree = true,
-					org_agenda_window_setup = "other",
-					org_todo_keywords = { "TODO", "WIP", "|", "DONE" },
-					org_agenda_custom_commands = {
-						r = {
-							description = "Recent 5 days journal entries",
-							command = "agenda",
-							files = { vim.fn.expand("~/org_roam_files/journal.org") },
-							start_day = "-4d",
-							span = 5,
-							header = "Recent Journal (past 5 days)",
-							repeating = true,
-							reversed = true,
-						},
-					},
-				})
-			end,
+	"xheisenbugx/org.nvim",
+	main = "org",
+	lazy = false, -- startup cost is small: heavy modules load on first use
+	opts = {
+		-- Files: where org lives. Everything captured lands in refile.org,
+		-- and the agenda scans every .org file under ~/org (including notes/).
+		org_directory = "~/org",
+		agenda_files = { "~/org/**/*.org" },
+		default_notes_file = "~/org/refile.org",
+
+		-- TODO states: (t) style letters are fast-selection keys.
+		-- Everything before "|" is an open state, everything after is finished.
+		todo_keywords = { "TODO(t) WAITING(w) | DONE(d) CANCELLED(c)" },
+
+		-- Logging: add a CLOSED: timestamp when an entry is marked DONE, and
+		-- keep state-change logs inside a :LOGBOOK: drawer so the body stays clean.
+		log_done = "time",
+		log_into_drawer = true,
+
+		-- Agenda: window = "split" is the default horizontal split under your
+		-- file. restore_windows_after_quit puts the window layout back as it was
+		-- before the agenda was opened when you quit it with q.
+		-- Shows a week, hides finished items, and warns about deadlines 14 days ahead.
+		agenda = {
+			window = "split",
+			restore_windows_after_quit = true,
+			span = "week",
+			skip_scheduled_if_done = true,
+			skip_deadline_if_done = true,
+		},
+		deadline_warning_days = 14,
+
+		-- Appearance: virtual indentation under headings, only the last star
+		-- shown per headline, and no *bold* / /italic/ marker characters.
+		ui = {
+			indent_mode = true,
+			hide_leading_stars = true,
+			hide_emphasis_markers = true,
+		},
+
+		-- Capture (<leader>oc): t is a plain todo, n is a note.
+		-- %? is the cursor position and %U stamps the creation time.
+		-- Add a date afterwards with <leader>od (deadline) or <leader>os (schedule).
+		capture = {
+			templates = {
+				t = { description = "Todo", template = "* TODO %?\n  %U", target = "~/org/refile.org" },
+				n = { description = "Note", template = "* %?\n  %U", target = "~/org/notes.org" },
+			},
+		},
+
+		-- Refile (<leader>or): move an entry into any agenda file, down to
+		-- the second heading level. The prompt shows the file name and lists
+		-- the full path at once instead of one level at a time.
+		refile = {
+			max_level = 2,
+			use_outline_path = "file",
+			outline_path_complete_in_steps = false,
 		},
 	},
-	config = function()
-		local week = get_current_iso_week()
-		require("org-roam").setup({
-			directory = "~/org_roam_files",
-			templates = {
-				d = {
-					description = "default",
-					template = "%?",
-					target = "%<%Y%m%d%H%M%S>-%[slug].org",
-				},
-				j = {
-					description = "Journal entry",
-					template = "* %?\n<%<%Y-%m-%d %a %H:%M>>\n", -- always insert an active timestamp
-					target = "~/org_roam_files/journal.org",
-					datetree = true, -- keep the daily hierarchy
-				},
-
-				o = {
-					description = "1:1 meeting",
-					target = "~/org_roam_files/one_on_one_meeting.org",
-					template = string.format(
-						[[
-* Week %s
-:PROPERTIES:
-:CREATED: %s
-:END:
-
-** Actions
-- [ ] 
-
-** Agenda
-- 
-
-** Notes
-- 
-          ]],
-						week,
-						"%U"
-					),
-				},
-				target = {
-					type = "node",
-				},
-			},
-			org_files = {
-				"~/another_org_dir",
-				"~/some/folder/*.org",
-				"~/a/single/org_file.org",
-			},
-		})
-	end,
 }

@@ -10,7 +10,7 @@ return {
 					modus_vivendi = "tinted", -- Set variant for `modus_vivendi` style
 				},
 			})
-			vim.cmd([[colorscheme modus_operandi]])
+			vim.cmd([[colorscheme modus_vivendi]])
 		end,
 	},
 }
