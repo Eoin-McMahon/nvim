@@ -10,7 +10,9 @@ return {
 					modus_vivendi = "tinted", -- Set variant for `modus_vivendi` style
 				},
 			})
-			vim.cmd([[colorscheme modus_vivendi]])
+			-- "modus" picks operandi or vivendi from 'background', which Nvim sets
+			-- from the terminal and updates when the system theme changes.
+			vim.cmd.colorscheme("modus")
 		end,
 	},
 }
