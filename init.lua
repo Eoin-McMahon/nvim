@@ -3,9 +3,6 @@ require("config.lazy")
 -- Window/pane navigation is handled by vim-tmux-navigator (see plugins/navigation.lua),
 -- which falls back to plain window movement outside tmux.
 
--- LSP rename
-vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { desc = "LSP Rename" })
-
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
 --  See `:help vim.highlight.on_yank()`
@@ -97,3 +94,6 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
 vim.keymap.set("n", "<leader>?", vim.diagnostic.open_float, { desc = "Open floating diagnostic" })
+
+-- LSP keymaps
+vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { desc = "LSP Rename" })
